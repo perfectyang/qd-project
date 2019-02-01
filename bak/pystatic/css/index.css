@@ -76,7 +76,6 @@ pre {
 
 a {
   background-color: transparent;
-  background-image: url("img/test.png?t=29726da4-25d3-11e9-9306-a860b6267236");
 }
 
 /**
@@ -557,3 +556,4 @@ h1 {
   display: flex;
   min-height: 100%;
 }
+

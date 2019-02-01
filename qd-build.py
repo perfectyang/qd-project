@@ -41,10 +41,11 @@ def recontent(filepath):
                 if filepath.endswith(('.html')):
                     replace_content = php_tpl + replace_content
                     Fs.write(replace_content)
+                    fileName = os.path.splitext(filepath)
                     if file_name == 'index':
-                        os.renames(filepath, os.path.join(file_dirname, file_name + '.php'))
+                        os.renames(filepath, fileName[0] + '.php')
                     else:
-                        os.renames(filepath, os.path.join(file_dirname, 'index.php'))
+                        os.renames(filepath, fileName[0] + '/index.php')
                 else:
                     Fs.write(replace_content)
 
