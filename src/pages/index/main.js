@@ -13,7 +13,6 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
-console.log('这果要要要', routes)
 bootstrap({ Router, Component: App, routes, states: store }, app => {
   // 批量注册单页全局组件
   Object.values(components)

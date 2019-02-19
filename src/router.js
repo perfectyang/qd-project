@@ -44,27 +44,27 @@ export default (store, routes = [], options = {}) => {
   })
 
   // 切换路由之前
-  // router.beforeEach(({ meta, path }, from, next) => {
-  //   // 判断是否登录
-  //   const { auth = options.validate } = meta
-  //   const isLogin = Boolean(store.state.User.uid)
-  //
-  //   NProgress.start()
-  //
-  //   // 进入下一个路由
-  //   if (auth) {
-  //     if (!isLogin && path !== '/login') return next({ path: '/login' })
-  //     if (isLogin && path === '/login') return next({ path: '/' })
-  //     next()
-  //   } else {
-  //     next()
-  //   }
-  // })
-  //
-  // // 切换路由完成
-  // router.afterEach(route => {
-  //   NProgress.done()
-  // })
+  router.beforeEach(({ meta, path }, from, next) => {
+    // 判断是否登录
+    const { auth = options.validate } = meta
+    const isLogin = Boolean(store.state.User.uid)
+
+    NProgress.start()
+
+    // 进入下一个路由
+    if (auth) {
+      if (!isLogin && path !== '/login') return next({ path: '/login' })
+      if (isLogin && path === '/login') return next({ path: '/' })
+      next()
+    } else {
+      next()
+    }
+  })
+
+  // 切换路由完成
+  router.afterEach(route => {
+    NProgress.done()
+  })
 
   return router
 }

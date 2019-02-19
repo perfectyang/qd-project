@@ -49,7 +49,6 @@ function addStyleResource (rule) {
 }
 // console.log('VUE_APP_ALLOW_ENTRY', VUE_APP_ALLOW_ENTRY)
 const pages = getPagesConfig(VUE_APP_ALLOW_ENTRY)
-console.log('多页', pages)
 
 module.exports = {
 
