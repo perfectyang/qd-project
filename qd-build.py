@@ -1,7 +1,9 @@
 # 打包配置
 import os, shutil, json, re, uuid
 with open('./envconfig.js', 'r+', encoding='utf8') as f:
-    envconfig = json.loads(f.read().replace('module.exports = ', ''))
+    config = f.read()
+    con = re.search(r'({.*?})', config, re.S).group()
+    envconfig = json.loads(con.replace("'", '"'))
 # print('envconfig', envconfig)
 # 后端环境配置
 php_tpl = '''
@@ -79,6 +81,7 @@ def copytree(src, dst, symlinks=False, ignore=None):
             shutil.copy(s, d)
 
 def main():
+    print('开始布署，请耐心等待-------')
     os.makedirs('bak')
     copytree('dist/', {'entries': 'bak', 'static': 'bak' })
     searchAllFiles('bak')
