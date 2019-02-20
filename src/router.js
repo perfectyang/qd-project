@@ -39,7 +39,6 @@ export default (store, routes = [], options = {}) => {
 
   const router = new VueRouter({
     // H5 history
-
     routes
   })
 
